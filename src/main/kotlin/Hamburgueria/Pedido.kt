@@ -1,12 +1,12 @@
 package Hamburgueria
 
-open class Pedido{
+open class Pedido {
 
     companion object {
 
         fun pedidoCliente(cadastro: Cadastro) {
 
-            if(cadastro.primeiraVez){
+            if (cadastro.primeiraVez) {
                 println("Essa é sua primeira compra!")
                 println("Você ganhou um Cupcake!")
                 cadastro.primeiraVezCliente()
@@ -22,10 +22,41 @@ open class Pedido{
             println("6 - Sair")
             var opcao = readLine()!!.toInt()
 
-            if (opcao < 1 || opcao > 6) {
-                println("\nOPÇÃO INVALIDA!!!!\n")
+            when (opcao) {
 
-            } else {
+                1 -> {
+                    println("Você escolheu o Combo Salada")
+                    pagamentoCliente()
+                }
+                2 -> {
+                    println("Você escolheu o Combo Chicken")
+                    pagamentoCliente()
+                }
+                3 -> {
+                    println("Você escolheu o Combo Tudão")
+                    pagamentoCliente()
+                }
+                4 -> {
+                    println("Você escolheu o Combo Tudão")
+                    pagamentoCliente()
+                }
+                5 -> {
+                    println("Você escolheu o Combo Veggie")
+                    pagamentoCliente()
+                }
+                6 -> println("Você saiu! Obrigado")
+            }
+
+            while (opcao == 6) {
+                break
+            }
+
+
+            while (opcao < 1 || opcao > 6) {
+                println("\nOPÇÃO INVALIDA!!!!\n")
+                println("\nDigite novamente:\n")
+                var opcao = readLine()!!.toInt()
+
 
                 when (opcao) {
 
@@ -49,15 +80,14 @@ open class Pedido{
                         println("Você escolheu o Combo Veggie")
                         pagamentoCliente()
                     }
-                    6 -> println("Sair")
+                    6 ->{
+                        println("Você saiu! Obrigado")
+                        break}
                 }
 
-                while (opcao == 6) {
-                    println("Obrigado!")
-                    break
-                }
             }
         }
+
 
         private fun pagamentoCliente() {
             println("Escolha uma opção de pagamento:")
@@ -66,10 +96,20 @@ open class Pedido{
             println("3 - Cancelar")
             var opcao = readLine()!!.toInt()
 
-            if (opcao < 1 || opcao > 6) {
-                println("\nOPÇÃO INVALIDA!!!!\n")
+            when (opcao) {
+                1 -> troco()
+                2 -> cartao()
+                3 -> cancelar()
+            }
 
-            } else {
+            while (opcao < 1 || opcao > 3) {
+                println("\nOPÇÃO INVALIDA!!!!\n")
+                println("\nDigite Novamente:\n")
+                println("Escolha uma opção de pagamento:")
+                println("1 - Dinheiro")
+                println("2 - Cartão ou Pix")
+                println("3 - Cancelar")
+                opcao = readLine()!!.toInt()
 
                 when (opcao) {
                     1 -> troco()
@@ -96,7 +136,10 @@ open class Pedido{
             var opc = readLine()!!.toInt()
 
             when (opc) {
-                1 -> println("Sim")
+                1 ->{println("Quanto ?")
+                    var valor= readLine()!!.toDouble()
+                    println("Você pediu troco para ${(valor)}")
+                }
                 2 -> println("Não")
             }
             println("Pedido recebido!")
@@ -110,7 +153,5 @@ open class Pedido{
         }
 
     }
-
 }
-
 
